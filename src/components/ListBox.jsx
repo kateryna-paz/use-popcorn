@@ -1,23 +1,14 @@
-import MoviesList from "./movie/MoviesList";
-import Summary from "./movie/Summary";
+import { useState } from "react";
 import Button from "./ui/Button";
 
-function ListBox({ isOpen, setIsOpen, movies, type }) {
+function ListBox({ children }) {
+    const [isOpen, setIsOpen] = useState(true);
   return (
     <div className="box">
       <Button className="btn-toggle" onClick={() => setIsOpen((open) => !open)}>
         {isOpen ? "–" : "+"}
       </Button>
-      {isOpen && type === "movies" && (
-        <MoviesList movies={movies} type={type} />
-      )}
-      {isOpen && type === "watched" && (
-        <>
-          <Summary watched={movies} />
-
-          <MoviesList movies={movies} type="watched" />
-        </>
-      )}
+      {isOpen && children}
     </div>
   );
 }
