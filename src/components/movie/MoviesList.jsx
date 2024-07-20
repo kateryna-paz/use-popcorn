@@ -1,38 +1,24 @@
 import MovieItem from "./MovieItem";
 
-function MoviesList({ movies, type }) {
+function MoviesList({ movies, onSelectMovie }) {
+  if (!movies) return <p className="message">No movies found</p>;
+
   return (
-    <ul className="list">
-      {type === "movies" &&
-        movies?.map((movie) => (
-          <MovieItem movie={movie} key={movie.imdbID}>
-            <div>
-              <p>
-                <span>🗓</span>
-                <span>{movie.Year}</span>
-              </p>
-            </div>
-          </MovieItem>
-        ))}
-      {type === "watched" &&
-        movies?.map((movie) => (
-          <MovieItem movie={movie} key={movie.imdbID}>
-            <div>
-              <p>
-                <span>⭐️</span>
-                <span>{movie.imdbRating}</span>
-              </p>
-              <p>
-                <span>🌟</span>
-                <span>{movie.userRating}</span>
-              </p>
-              <p>
-                <span>⏳</span>
-                <span>{movie.runtime} min</span>
-              </p>
-            </div>
-          </MovieItem>
-        ))}
+    <ul className="list list-movies">
+      {movies?.map((movie) => (
+        <MovieItem
+          movie={movie}
+          key={movie.imdbID}
+          onSelectMovie={onSelectMovie}
+        >
+          <div>
+            <p>
+              <span>🗓</span>
+              <span>{movie.Year}</span>
+            </p>
+          </div>
+        </MovieItem>
+      ))}
     </ul>
   );
 }

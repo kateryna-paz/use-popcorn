@@ -8,7 +8,7 @@ function Navbar({ query, movies, setQuery }) {
       <Input placeholder="Search movies..." value={query} onChange={setQuery} />
 
       <p className="num-results">
-        Found <strong>{movies.length}</strong> results
+        Found <strong>{movies?.length}</strong> results
       </p>
     </nav>
   );

@@ -55,7 +55,7 @@ body {
   max-width: 42rem;
   background-color: var(--color-background-500);
   border-radius: 0.9rem;
-
+  overflow-y: scroll;
   position: relative;
 }
 
@@ -67,7 +67,8 @@ body {
   margin: 4.8rem;
 }
 
-.error {
+.error,
+.message {
   text-align: center;
   font-size: 2rem;
   padding: 4.8rem;
